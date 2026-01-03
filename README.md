@@ -51,11 +51,11 @@ A arquitetura abaixo substitui diagramas estáticos tradicionais, utilizando **M
 ```mermaid
 flowchart LR
     subgraph Client Layer
-        Order[Order Service\n(Spring Boot)]
+        Order["Order Service (Spring Boot)"]
     end
 
     subgraph Orchestration Layer
-        Orchestrator[Orchestrator Service\nSaga Controller]
+        Orchestrator["Orchestrator Service Saga Controller"]
     end
 
     subgraph Messaging Layer
