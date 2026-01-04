@@ -2,5 +2,10 @@ spring:
   application:
     name: OrderService
 
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@localhost:27017/order-db
+
+
 server:
   port: 3000
