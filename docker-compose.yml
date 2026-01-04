@@ -13,6 +13,11 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=123456
     ports:
       - 27017:27017
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   
   product-db:
     container_name: product-db
@@ -52,6 +57,21 @@ services:
       - orchestrator-saga
     ports:
       - "5434:5432"
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: always
+    container_name: mongo_ui
+    networks:
+      - orchestrator-saga
+    ports:
+      - 18080:8081
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://admin:123456@order-db:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=user
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
+    depends_on:
+      - order-db
 
   kafka:
     image: apache/kafka:latest
