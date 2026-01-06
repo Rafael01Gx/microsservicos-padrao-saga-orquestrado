@@ -1,5 +1,11 @@
 app:
   kafka:
+    topic:
+      start-saga: start-saga
+      orchestrator: orchestrator
+      finish-success: finish-success
+      finish-fail: finish-fail
+
     topic-config:
       partitions: 1
       replicas: 1
