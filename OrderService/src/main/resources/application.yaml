@@ -1,11 +1,24 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: OrderService
 
   data:
     mongodb:
-      uri: mongodb://admin:123456@localhost:27017/order-db
+      uri: ${MONGO_DB_URI:mongodb://admin:123456@localhost:27017/order-db}
 
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    consumer:
+      group-id: order-service-group
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 server:
-  port: 3000
+  port: 0

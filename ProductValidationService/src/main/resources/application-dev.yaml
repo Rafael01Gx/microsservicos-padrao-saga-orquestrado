@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+app:
+  kafka:
+    topic:
+      product-validation-success: product-validation-success
+      product-validation-fail: product-validation-fail
+      orchestrator: orchestrator
+    topic-config:
+      partitions: 1
+      replicas: 1
+
+server:
+  port: 8092
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: INFO

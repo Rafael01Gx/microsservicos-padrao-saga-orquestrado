@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+app:
+  kafka:
+    topic:
+      payment-success: payment-success
+      payment-fail: payment-fail
+      orchestrator: orchestrator
+    topic-config:
+      partitions: 1
+      replicas: 1
+
+server:
+  port: 8091
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: INFO

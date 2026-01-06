@@ -1,16 +1,25 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: InventoryService
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5434/inventory-db?createDatabaseIfNotExist=true
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5434}/${DB_DATA_NAME:inventory-db}?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
 
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    consumer:
+      group-id: inventory-service-group
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
-server:
-  port: 8092
+  server:
+    port: 0

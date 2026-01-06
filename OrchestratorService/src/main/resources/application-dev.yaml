@@ -1,0 +1,14 @@
+app:
+  kafka:
+    topic-config:
+      partitions: 1
+      replicas: 1
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: INFO

@@ -1,6 +1,18 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: OrchestratorService
 
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    consumer:
+      group-id: orchestrator-group
+      auto-offset-reset: latest
+    topics:
+      default:
+        partitions: 1
+        replicas: 1
+
 server:
-  port: 8080
+  port: 0

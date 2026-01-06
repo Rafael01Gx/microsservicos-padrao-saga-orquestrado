@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+app:
+  kafka:
+    topic:
+      inventory-success: inventory-success
+      inventory-fail: inventory-fail
+      orchestrator: orchestrator
+    topic-config:
+      partitions: 1
+      replicas: 1
+
+server:
+  port: 8090
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: INFO
