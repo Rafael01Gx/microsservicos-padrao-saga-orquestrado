@@ -105,6 +105,11 @@ services:
       KAFKA_LOG_DIRS: '/var/lib/kafka/data'
     volumes:
       - kafka_data:/var/data/kafka/
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:29092 --list" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redpanda-console:
     container_name: redpanda
