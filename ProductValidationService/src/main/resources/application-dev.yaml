@@ -14,7 +14,7 @@ app:
       replicas: 1
 
 server:
-  port: 8092
+  port: 8090
 
 logging:
   level:

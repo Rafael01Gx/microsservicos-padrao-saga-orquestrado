@@ -6,8 +6,8 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_DATA_NAME:payment-db}?createDatabaseIfNotExist=true
-    username: ${DB_USERNAME:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:payment-db}?createDatabaseIfNotExist=true
+    username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
 
   kafka:
