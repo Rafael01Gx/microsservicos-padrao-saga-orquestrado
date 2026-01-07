@@ -31,7 +31,7 @@ public class EventService {
     }
 
     public Event findByFilters(EventFilters filters) {
-        if (filters.orderId() != null) {
+        if (!filters.orderId().isEmpty()) {
            return findByOrderId(filters.orderId());
         } else {
         return findByTransactionId(filters.transactionId());
@@ -43,7 +43,7 @@ public class EventService {
                 .orElseThrow(ValidationException::eventNotFound);
     }
     private Event findByTransactionId(String orderId) {
-        return eventRepository.findTop1ByOrderId(orderId)
+        return eventRepository.findTop1ByTransactionId(orderId)
                 .orElseThrow(ValidationException::eventNotFound);
     }
 }
