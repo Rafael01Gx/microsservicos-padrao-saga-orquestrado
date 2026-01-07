@@ -9,4 +9,8 @@ public class ValidationException extends RuntimeException {
     public ValidationException(String message) {
         super(message);
     }
+
+    public static ValidationException eventNotFound() {
+        return new ValidationException("Event not found.");
+    }
 }

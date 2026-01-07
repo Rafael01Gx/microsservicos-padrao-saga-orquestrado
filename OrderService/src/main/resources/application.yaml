@@ -6,7 +6,7 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGO_DB_URI:mongodb://admin:123456@localhost:27017/order-db}
+      uri: mongodb://localhost:27017/order-db
 
 
   kafka:
